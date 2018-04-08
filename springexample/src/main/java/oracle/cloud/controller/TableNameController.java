@@ -11,6 +11,7 @@ import oracle.cloud.model.TableName;
 import oracle.cloud.repository.TableNameRepository;
 import oracle.cloud.service.TableNameService;
 
+
 @Controller
 public class TableNameController {
 	

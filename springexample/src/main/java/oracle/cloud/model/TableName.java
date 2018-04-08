@@ -2,6 +2,9 @@ package oracle.cloud.model;
 
 import java.sql.Date;
 
+import org.springframework.stereotype.Component;
+
+@Component
 public class TableName {
 	
 	private int id;
