@@ -9,12 +9,13 @@ import org.springframework.web.servlet.ModelAndView;
 
 import oracle.cloud.model.TableName;
 import oracle.cloud.repository.TableNameRepository;
+import oracle.cloud.service.TableNameService;
 
 @Controller
 public class TableNameController {
 	
 	@Autowired
-	private TableNameRepository repository;
+	private TableNameService service;
 	
 	@GetMapping("/index")
 	public ModelAndView index() {
@@ -31,13 +32,13 @@ public class TableNameController {
 	@PostMapping("redirect2")
 	public ModelAndView redirect2() {
 		ModelAndView modelAndView = new ModelAndView("List", "command", new TableName());
-		modelAndView.addObject("listAllElements", repository.listAll());
+		modelAndView.addObject("listAllElements", service.listAll());
 		return modelAndView;
 	}
 	
 	@PostMapping("insert")
 	public ModelAndView companyInsert(@ModelAttribute TableName tablename) {
-		repository.insert(tablename);
+		service.insert(tablename);
 		ModelAndView modelAndView = new ModelAndView("Insert", "command", new TableName());
 		return modelAndView;
 	}
@@ -53,7 +54,7 @@ public class TableNameController {
 	@GetMapping("/List")
 	public ModelAndView list() {
 		ModelAndView modelAndView = new ModelAndView("List", "command", new TableName());
-		modelAndView.addObject("listAllElements", repository.listAll());
+		modelAndView.addObject("listAllElements", service.listAll());
 		return modelAndView;
 	}
 	
